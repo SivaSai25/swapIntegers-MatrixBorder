@@ -1,0 +1,106 @@
+int r,c;
+scanf("%d %d",&r,&c);
+int a[r][c];
+for(int i=0;i<r;i++)
+{
+    for(int j=0;j<c;j++)
+    {
+        scanf("%d",&a[i][j]);
+    }
+}
+int A,b;
+int x=0,y=0,e,d,s,t,u,v,max;
+scanf("%d %d",&A,&b);
+if(A>b)
+{
+    max=A;
+}
+else
+{
+    max=b;
+}
+for(int w=0;w<=max/4;w++)
+{
+    for(int j=0;j<c;j++)
+    {
+      x++;
+      y++;
+      if(x==A)
+      {
+        
+          s=0;
+          t=j;
+      }
+      if(y==b)
+      {
+         
+          u=0;
+          v=j;
+      }
+         
+    }
+    for(int j=1;j<r;j++)
+    {
+       x++;
+       y++;
+       if(x==A)
+       {
+           
+           s=j;
+           t=c-1;
+       }
+       if(y==b)
+       {
+        
+         u=j;
+         v=c-1;
+       }
+    }
+    for(int j=c-2;j>=0;j--)
+    {
+        x++;
+        y++;
+        if(x==A)
+        {
+            
+            s=r-1;
+            t=j;
+        }
+        if(y==b)
+        {
+          
+          u=r-1;
+          v=j;
+        }
+    }
+    for(int j=r-2;j>0;j--)
+    {
+        x++;
+        y++;
+        if(x==A)
+        {
+           
+            s=j;
+            t=0;
+        }
+        if(x==b)
+        {
+
+            u=j;
+            v=0;
+
+        }
+    }
+    //w=y;
+}
+a[s][t]=a[s][t]+a[u][v];
+a[u][v]=a[s][t]-a[u][v];
+a[s][t]=a[s][t]-a[u][v];
+for(int i=0;i<r;i++)
+{
+    for(int j=0;j<c;j++)
+    {
+        printf("%d ",a[i][j]);
+    }
+    printf("\n");
+}
